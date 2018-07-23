@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-light justify-content-between bg-light-navbar">
+  <a class="navbar-brand header-label">Users</a>
+  <form class="form-inline">
+    <img class="sort-control" src="./assets/sort.jpg" width="22" height="22">
+    <img src="./assets/search.jpg" width="22" height="22">
+  </form>
+</nav>
+<div class="pointer" *ngFor="let user of userList" (click)="doUserSelect($event, user)" [ngClass]="{'user-select' : user === selectedUser}">
+  <div class="row view-container">
+    <img class="user-photo rounded-circle" src="{{user.photo}}" width="40" height="40">
+    <ul class="userlist-ul">
+      <li class="username-label">{{user.name}}</li>
+      <li class="other-label">{{user.username}}</li>
+      <li class="other-label">{{user.email}}</li>
+    </ul>
+    <div class="col-md-12 hr-line"></div>
+  </div>
+</div>

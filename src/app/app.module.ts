@@ -1,16 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { AlbumListComponent } from './album-list/album-list.component';
+import { PhotoTileListComponent } from './photo-tile-list/photo-tile-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppService } from './app.service';
+import { MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserListComponent,
+    AlbumListComponent,
+    PhotoTileListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    { provide: APP_INITIALIZER, useFactory: getSolution, deps: [AppService], multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function getSolution(appService: AppService) {
+  return () => appService.loadConfig();
+}

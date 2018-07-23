@@ -1,0 +1,10 @@
+<div class="view-container">
+  <p class="photo-count">{{selectedAlbumsPhotosCount}} Photos</p>
+  <label class="no-album-text" *ngIf="!isAlbumSelected">Select an album first</label>
+  <div class="row" *ngIf="isAlbumSelected">
+    <div class="col-md-3" *ngFor="let photo of photosList">
+      <img src="{{photo.thumbnailUrl}}" title="{{photo.title}}">
+      <p class="text-truncate photo-title" title="{{photo.title}}">{{photo.title}}</p>
+    </div>
+  </div>
+</div>

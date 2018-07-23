@@ -1,0 +1,58 @@
+.bg-light-navbar {
+  background-color: #FFFFFF !important;
+}
+
+.view-header-bar {
+  height: 64px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 4px 0 rgba(233, 119, 119, 0.12);
+  padding-top: 5%;
+  padding-right: 5%;
+}
+
+.header-label {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  text-align: left;
+  color: #333333;
+}
+
+.control {
+  float: right;
+}
+
+.sort-control {
+  margin-right: 25px;
+}
+
+.view-container {
+  margin: 2%;
+}
+
+.no-user-text {
+  padding-top: 5%;
+  padding-left: 40%;
+  padding-bottom: 10%;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.album-name {
+  font-size: 13px;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87)
+}
+
+.photos-count {
+  font-size: 13px;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.54);
+  // margin-left: 2%;
+  margin-top: 0.2%;
+}

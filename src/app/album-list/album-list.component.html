@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-light justify-content-between bg-light-navbar">
+  <a class="navbar-brand header-label">Albums</a>
+  <form class="form-inline">
+    <mat-checkbox class="control">Select all</mat-checkbox>
+  </form>
+</nav>
+<div class="view-container">
+  <label *ngIf="selectedUser.userid === -1" class="no-user-text">Select a user first</label>
+  <div class="container row" *ngIf="selectedUser.userid !== -1">
+    <div class="col-md-6" *ngFor="let album of albumList">
+      <div class="row">
+        <mat-checkbox class="control album-name" (click)="doAlbumSelect(album)">
+          <div class="text-truncate" style="min-width: 230px; max-width: 230px;">{{album.title}}</div>
+        </mat-checkbox>
+        <span class="photos-count">{{album.photosCount}} Photos</span>
+      </div>
+    </div>
+  </div>
