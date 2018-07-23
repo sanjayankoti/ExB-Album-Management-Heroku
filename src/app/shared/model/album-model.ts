@@ -3,4 +3,5 @@ export class AlbumModel {
     userid: number;
     title: string;
     photosCount: number;
+    checked: boolean;
 }

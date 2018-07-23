@@ -14,7 +14,6 @@ import { isArray } from 'util';
 export class PhotoTileListComponent implements OnInit {
 
   public selectedAlbumsPhotosCount: number = 0;
-  public isAlbumSelected: boolean = false;
   public photosList = new Array<PhotoModel>();
 
   constructor(private httpService: HttpService, private sharedDataService: SharedDataService) { }
@@ -22,18 +21,19 @@ export class PhotoTileListComponent implements OnInit {
   public ngOnInit() {
     this.sharedDataService.selectedAlbums.subscribe(albums => {
       if (albums) {
-        this.isAlbumSelected = albums.length > 0 ? true : false;
         this.photosList = new Array<PhotoModel>();
         this.selectedAlbumsPhotosCount = 0;
         albums.forEach((val) => {
-          this.selectedAlbumsPhotosCount += val.photosCount;
-          this.fetchPhotoByAlbumId(val.id).subscribe(photos => {
-            if (isArray(photos)) {
-              this.photosList.push(...photos);
-            }
-          }, (error) => {
-            throw error;
-          });
+          if(val.checked) {
+            this.selectedAlbumsPhotosCount += val.photosCount;
+            this.fetchPhotoByAlbumId(val.id).subscribe(photos => {
+              if (isArray(photos)) {
+                this.photosList.push(...photos);
+              }
+            }, (error) => {
+              throw error;
+            });
+          }
         });
       }
     }, (error) => {
@@ -42,7 +42,6 @@ export class PhotoTileListComponent implements OnInit {
     this.sharedDataService.selectedUser.subscribe(user => {
       if (user) {
         this.selectedAlbumsPhotosCount = 0;
-        this.isAlbumSelected = false;
         this.photosList = new Array<PhotoModel>();
       }
     }, (error) => {

@@ -8,6 +8,7 @@ import { PhotoTileListComponent } from './photo-tile-list/photo-tile-list.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppService } from './app.service';
 import { MatCheckboxModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MatCheckboxModule } from '@angular/material';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatCheckboxModule

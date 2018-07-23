@@ -6,6 +6,7 @@ import { UserModel } from '../shared/model/user-model';
 import { Observable } from 'rxjs/internal/Observable';
 import { AlbumModel } from '../shared/model/album-model';
 import { isArray } from 'util';
+import { MatCheckboxChange } from '@angular/material';
 
 @Component({
   selector: 'app-album-list',
@@ -16,12 +17,14 @@ export class AlbumListComponent implements OnInit {
 
   public selectedUser: UserModel = new UserModel();
   public albumList = new Array<AlbumModel>();
+  private isSelectAllChecked: boolean = false;
 
   constructor(private httpService: HttpService, private sharedDataService: SharedDataService) { }
 
   public ngOnInit() {
     this.sharedDataService.selectedUser.subscribe(user => {
       if (user) {
+        this.isSelectAllChecked = false;
         this.fetchAlbumListByUserId(user.userid).subscribe(albums => {
           this.albumList = new Array<AlbumModel>();
           if (isArray(albums)) {
@@ -38,7 +41,7 @@ export class AlbumListComponent implements OnInit {
               }, (error) => {
                 throw error;
               });
-            });            
+            });
             this.selectedUser = user;
           }
         }, (error) => {
@@ -58,7 +61,16 @@ export class AlbumListComponent implements OnInit {
     return this.httpService.get(AppSettings.API_ENDPOINT_URL + AppSettings.GET_ALBUM_LIST_SERVICE, userId);
   }
 
-  public doAlbumSelect(selectedAlbum: AlbumModel) {
-    this.sharedDataService.setSelectedAlbums(selectedAlbum);
+  public doAlbumSelect(event: MatCheckboxChange, selectType: string, selectedAlbum?: AlbumModel) {
+    if (selectType === 'all') {
+      this.isSelectAllChecked = event.checked;
+      this.albumList.map((val) => {
+        val.checked = event.checked;
+      });
+      this.sharedDataService.setSelectedAlbums(selectType, this.albumList, selectedAlbum, event.checked);
+    } else {
+      this.isSelectAllChecked = false;
+      this.sharedDataService.setSelectedAlbums(selectType, this.albumList, selectedAlbum, event.checked);
+    }
   }
 }

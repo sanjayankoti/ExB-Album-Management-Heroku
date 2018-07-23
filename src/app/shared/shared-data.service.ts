@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { UserModel } from './model/user-model';
 import { AlbumModel } from './model/album-model';
@@ -20,13 +19,21 @@ export class SharedDataService {
     this.selectedUser.next(user);
   }
 
-  public setSelectedAlbums(album: AlbumModel) {
-    const index = this.selectedAlbumsList.indexOf(album);
-    if(index === -1) {
-      this.selectedAlbumsList.push(album);
+  public setSelectedAlbums(selectType: string, albumList: Array<AlbumModel>, album: AlbumModel, isSelectAllChecked?: boolean) {
+    if (selectType === 'all') {
+      this.selectedAlbumsList = new Array<AlbumModel>();
+      if (isSelectAllChecked) {
+        this.selectedAlbumsList = albumList;
+      }
     } else {
-      this.selectedAlbumsList.splice(index, 1);
-    }    
+      const index = this.selectedAlbumsList.indexOf(album);
+      if (index === -1) {
+        album.checked = isSelectAllChecked;
+        this.selectedAlbumsList.push(album);
+      } else {
+        this.selectedAlbumsList[index].checked = isSelectAllChecked;
+      }
+    }
     this.selectedAlbums.next(this.selectedAlbumsList);
   }
 }
