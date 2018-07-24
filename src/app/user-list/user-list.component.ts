@@ -41,10 +41,16 @@ export class UserListComponent implements OnInit {
   }
 
   public doToggleSearch(action?: string) {
-    if(action === 'close') {
+    if (action === 'close') {
       this.searchText = '';
     }
     this.isSearchUser = !this.isSearchUser;
+  }
+
+  public doSortUsersList(sortType: string) {
+    this.userList.sort(function (a, b) {
+      return sortType === 'a-z' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+    });
   }
 
   public ngOnInit() {

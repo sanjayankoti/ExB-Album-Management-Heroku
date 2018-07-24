@@ -8,7 +8,17 @@
     </form>
   </div>
   <form class="form-inline" *ngIf="!isSearchUser">
-    <img class="sort-control" src="./assets/sort.jpg" width="20" height="20">
+    <!-- <img class="sort-control" src="./assets/sort.jpg" width="20" height="20"> -->
+    <div class="dropdown">
+      <img class="sort-control" src="./assets/sort.jpg" width="20" height="20" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+      <div class="dropdown-menu sort-dropdown" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item disabled" href="#"><i class="fas fa-check icon sort-options"></i>Name</a>
+        <hr>
+        <a class="dropdown-item" href="#" (click)="doSortUsersList('a-z')"><i class="fas fa-check icon sort-options"></i>A-Z</a>
+        <a class="dropdown-item" href="#" (click)="doSortUsersList('z-a')"><i class="fas fa-check icon sort-options"></i>Z-A</a>
+      </div>
+    </div>
     <i class="fas fa-search icon" (click)="doToggleSearch()"></i>
   </form>
 </nav>
