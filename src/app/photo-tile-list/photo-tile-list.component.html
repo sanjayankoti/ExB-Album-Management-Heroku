@@ -24,7 +24,8 @@
 <div class="view-container">
   <div class="row" *ngIf="selectedAlbumsPhotosCount > 0">
     <div class="col-md-3" *ngFor="let photo of photosList">
-      <img src="{{photo.thumbnailUrl}}" title="{{photo.title}}">
+      <mat-spinner *ngIf="!photo.loaded"></mat-spinner>
+      <img src="{{photo.thumbnailUrl}}" title="{{photo.title}}" (load)="photo.loaded = true">
       <p class="text-truncate photo-title" title="{{photo.title}}">{{photo.title}}</p>
     </div>
   </div>

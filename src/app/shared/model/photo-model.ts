@@ -4,4 +4,5 @@ export class PhotoModel {
    title: string;
    url: string;
    thumbnailUrl: string;
+   loaded: boolean;
 }
