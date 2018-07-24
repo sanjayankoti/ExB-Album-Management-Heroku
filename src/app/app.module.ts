@@ -9,20 +9,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppService } from './app.service';
 import { MatCheckboxModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SearchFilterPipe } from './shared/pipe/search-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
     AlbumListComponent,
-    PhotoTileListComponent
+    PhotoTileListComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: APP_INITIALIZER, useFactory: getSolution, deps: [AppService], multi: true }

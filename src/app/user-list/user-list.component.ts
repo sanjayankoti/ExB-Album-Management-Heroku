@@ -14,6 +14,8 @@ export class UserListComponent implements OnInit {
 
   public userList = new Array<UserModel>();
   public selectedUser: UserModel = new UserModel();
+  public isSearchUser: boolean = false;
+  public searchText: string = '';
 
   constructor(private httpService: HttpService, private sharedDataService: SharedDataService) {
     this.httpService.get(AppSettings.API_ENDPOINT_URL + AppSettings.GET_USERS_LIST_SERVICE).subscribe(users => {
@@ -36,6 +38,13 @@ export class UserListComponent implements OnInit {
   public doUserSelect(event: Event, selectedUser: UserModel) {
     this.selectedUser = selectedUser;
     this.sharedDataService.setSelectedUser(selectedUser);
+  }
+
+  public doToggleSearch(action?: string) {
+    if(action === 'close') {
+      this.searchText = '';
+    }
+    this.isSearchUser = !this.isSearchUser;
   }
 
   public ngOnInit() {
