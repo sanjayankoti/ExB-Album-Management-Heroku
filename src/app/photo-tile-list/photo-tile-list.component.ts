@@ -24,6 +24,7 @@ export class PhotoTileListComponent implements OnInit {
       if (albums) {
         this.photosList = new Array<PhotoModel>();
         this.selectedAlbumsPhotosCount = 0;
+        this.sortType = '';
         albums.forEach((val) => {
           if (val.checked) {
             this.selectedAlbumsPhotosCount += val.photosCount;
@@ -43,6 +44,7 @@ export class PhotoTileListComponent implements OnInit {
     this.sharedDataService.selectedUser.subscribe(user => {
       if (user) {
         this.selectedAlbumsPhotosCount = 0;
+        this.sortType = '';
         this.photosList = new Array<PhotoModel>();
       }
     }, (error) => {
