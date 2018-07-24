@@ -24,9 +24,9 @@
   <div class="row view-container">
     <img class="user-photo rounded-circle" src="{{user.photo}}" width="40" height="40">
     <ul class="userlist-ul">
-      <li class="username-label">{{user.name}}</li>
-      <li class="other-label">{{user.username}}</li>
-      <li class="other-label">{{user.email}}</li>
+      <li class="username-label" [ngClass]="{'user-select-text' : user === selectedUser}">{{user.name}}</li>
+      <li class="other-label" [ngClass]="{'user-select-text' : user === selectedUser}">{{user.username}}</li>
+      <li class="other-label" [ngClass]="{'user-select-text' : user === selectedUser}">{{user.email}}</li>
     </ul>
     <div class="col-md-12 hr-line"></div>
   </div>
