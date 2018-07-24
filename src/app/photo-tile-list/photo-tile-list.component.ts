@@ -15,6 +15,7 @@ export class PhotoTileListComponent implements OnInit {
 
   public selectedAlbumsPhotosCount: number = 0;
   public photosList = new Array<PhotoModel>();
+  public sortType: string = '';
 
   constructor(private httpService: HttpService, private sharedDataService: SharedDataService) { }
 
@@ -51,5 +52,13 @@ export class PhotoTileListComponent implements OnInit {
 
   private fetchPhotoByAlbumId(albumId: number): Observable<PhotoModel[]> {
     return this.httpService.get(AppSettings.API_ENDPOINT_URL + AppSettings.GET_PHOTO_LIST_SERVICE, albumId);
+  }
+
+  public doSortUsersList(sortType: string) {
+    if(this.selectedAlbumsPhotosCount === 0) return;
+    this.sortType = sortType;
+    this.photosList.sort(function (current, next) {
+      return sortType === 'a-z' ? current.title.localeCompare(next.title) : next.title.localeCompare(current.title);
+    });
   }
 }

@@ -50,8 +50,8 @@ export class UserListComponent implements OnInit {
 
   public doSortUsersList(sortType: string) {
     this.sortType = sortType;
-    this.userList.sort(function (a, b) {
-      return sortType === 'a-z' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+    this.userList.sort(function (current, next) {
+      return sortType === 'a-z' ? current.name.localeCompare(next.name) : next.name.localeCompare(current.name);
     });
   }
 

@@ -2,6 +2,10 @@
   margin: 2%;
 }
 
+.bg-light-navbar {
+  background-color: #FFFFFF !important;
+}
+
 .photo-count {
   font-size: 20px;
   font-weight: 500;
@@ -30,4 +34,22 @@
   color: rgba(0, 0, 0, 0.87);
   min-width: 150px;
   max-width: 150px;
+}
+
+.sort-dropdown {
+  min-width: 115px;
+  min-height: 130px;
+  font-size: 13px;
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.87);
+  margin-left: -405%;
+  margin-top: -200%;
+}
+
+.sort-options {
+  margin-right: 14%;
+}
+
+.sort-label-position {
+  margin-left: 36%;
 }
