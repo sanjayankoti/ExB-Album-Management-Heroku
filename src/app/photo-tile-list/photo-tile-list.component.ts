@@ -25,7 +25,7 @@ export class PhotoTileListComponent implements OnInit {
         this.photosList = new Array<PhotoModel>();
         this.selectedAlbumsPhotosCount = 0;
         albums.forEach((val) => {
-          if(val.checked) {
+          if (val.checked) {
             this.selectedAlbumsPhotosCount += val.photosCount;
             this.fetchPhotoByAlbumId(val.id).subscribe(photos => {
               if (isArray(photos)) {
@@ -55,7 +55,6 @@ export class PhotoTileListComponent implements OnInit {
   }
 
   public doSortUsersList(sortType: string) {
-    if(this.selectedAlbumsPhotosCount === 0) return;
     this.sortType = sortType;
     this.photosList.sort(function (current, next) {
       return sortType === 'a-z' ? current.title.localeCompare(next.title) : next.title.localeCompare(current.title);

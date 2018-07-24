@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light justify-content-between bg-light-navbar">
   <a class="navbar-brand header-label">Albums</a>
-  <form class="form-inline">
+  <form class="form-inline" *ngIf="selectedUser.userid !== -1">
     <mat-checkbox class="control" [checked]="isSelectAllChecked" (change)="doAlbumSelect($event, 'all')">Select all</mat-checkbox>
   </form>
 </nav>
