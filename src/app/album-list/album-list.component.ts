@@ -17,7 +17,7 @@ export class AlbumListComponent implements OnInit {
 
   public selectedUser: UserModel = new UserModel();
   public albumList = new Array<AlbumModel>();
-  private isSelectAllChecked: boolean = false;
+  public isSelectAllChecked: boolean = false;
 
   constructor(private httpService: HttpService, private sharedDataService: SharedDataService) { }
 

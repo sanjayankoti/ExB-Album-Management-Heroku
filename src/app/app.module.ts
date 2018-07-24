@@ -7,7 +7,7 @@ import { AlbumListComponent } from './album-list/album-list.component';
 import { PhotoTileListComponent } from './photo-tile-list/photo-tile-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppService } from './app.service';
-import { MatCheckboxModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatCheckboxModule, MatProgressSpinnerModule, MatInputModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchFilterPipe } from './shared/pipe/search-filter.pipe';
@@ -27,6 +27,7 @@ import { SearchFilterPipe } from './shared/pipe/search-filter.pipe';
     HttpClientModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
+    MatInputModule,
     FontAwesomeModule
   ],
   providers: [
