@@ -16,6 +16,7 @@ export class UserListComponent implements OnInit {
   public selectedUser: UserModel = new UserModel();
   public isSearchUser: boolean = false;
   public searchText: string = '';
+  public sortType: string = '';
 
   constructor(private httpService: HttpService, private sharedDataService: SharedDataService) {
     this.httpService.get(AppSettings.API_ENDPOINT_URL + AppSettings.GET_USERS_LIST_SERVICE).subscribe(users => {
@@ -48,6 +49,7 @@ export class UserListComponent implements OnInit {
   }
 
   public doSortUsersList(sortType: string) {
+    this.sortType = sortType;
     this.userList.sort(function (a, b) {
       return sortType === 'a-z' ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
     });
